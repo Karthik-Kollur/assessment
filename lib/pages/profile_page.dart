@@ -194,209 +194,222 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        title: Text(
-          "Profile",
-          style: TextStyle(
-              fontSize: 35, fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AboutMe()));
-            },
-            icon: Icon(
-              Icons.edit,
-              color: Colors.black,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              setState(() {});
-            },
-            icon: Icon(
-              Icons.settings,
-              color: Colors.black,
-            ),
-          )
-        ],
-      ),
       body: ListView.builder(
         itemCount: list.length - 1,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Column(children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PublicPage()));
-                },
-                child: Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 45.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.cyanAccent,
-                            radius: 50.0,
-                          ),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                'John Doe',
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "30 years",
-                                style: TextStyle(fontSize: 16.0),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          "'SpaceX is welcoming a key new hire. Kathy Lueders, who led NASA's human spaceflight program before retiring in April, is joining Elon Musk's firm as general manager and will work'",
+                      Text(
+                        'Profile',
+                        style: TextStyle(
+                          fontSize: 40.0,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Row(
                         children: [
-                          Container(
-                            width: 120.0,
-                            child: FilterChip(
-                              label: Row(
-                                children: [
-                                  Icon(Icons.location_pin),
-                                  Text("India"),
-                                ],
+                          Padding(
+                            padding: const EdgeInsets.only(right: 30.0),
+                            child: IconButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => AboutMe()));
+                              },
+                              icon: Icon(
+                                Icons.edit,
+                                size: 32.0,
                               ),
-                              onSelected: (bool value) {},
-                              backgroundColor: Colors.white70,
                             ),
                           ),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          Container(
-                            width: 120.0,
-                            child: FilterChip(
-                              label: Row(
-                                children: [
-                                  Icon(Icons.male),
-                                  Text("Male"),
-                                ],
-                              ),
-                              onSelected: (bool value) {},
-                              backgroundColor: Colors.white70,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            width: 120.0,
-                            child: FilterChip(
-                              label: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    Icons.star_border,
-                                    color: Colors.white,
-                                  ),
-                                  Text(
-                                    "Music",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              onSelected: (bool value) {},
-                              backgroundColor: Colors.black,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          Container(
-                            width: 120.0,
-                            child: FilterChip(
-                              label: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    Icons.star_border,
-                                    color: Colors.white,
-                                  ),
-                                  Text(
-                                    "Music",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              onSelected: (bool value) {},
-                              backgroundColor: Colors.black,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          Container(
-                            width: 120.0,
-                            child: FilterChip(
-                              label: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    Icons.star_border,
-                                    color: Colors.white,
-                                  ),
-                                  Text(
-                                    "Music",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              onSelected: (bool value) {},
-                              backgroundColor: Colors.black,
-                            ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.settings_outlined, size: 32.0),
                           ),
                         ],
                       ),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 100.0,
-              ),
-              list[index],
-              Divider(
-                color: Colors.black,
-                thickness: 2.0,
-              ),
-              list[index],
-              Divider(
-                color: Colors.black,
-                thickness: 2.0,
-              ),
-              list[index],
-              Divider(
-                color: Colors.black,
-                thickness: 2.0,
-              ),
-            ]),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PublicPage()),
+                    );
+                  },
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.cyanAccent,
+                              radius: 50.0,
+                            ),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  'John Doe',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "30 years",
+                                  style: TextStyle(fontSize: 16.0),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            "'SpaceX is welcoming a key new hire. Kathy Lueders, who led NASA's human spaceflight program before retiring in April, is joining Elon Musk's firm as general manager and will work'",
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 120.0,
+                              child: FilterChip(
+                                label: Row(
+                                  children: [
+                                    Icon(Icons.location_pin),
+                                    Text("India"),
+                                  ],
+                                ),
+                                onSelected: (bool value) {},
+                                backgroundColor: Colors.white70,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            Container(
+                              width: 120.0,
+                              child: FilterChip(
+                                label: Row(
+                                  children: [
+                                    Icon(Icons.male),
+                                    Text("Male"),
+                                  ],
+                                ),
+                                onSelected: (bool value) {},
+                                backgroundColor: Colors.white70,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              width: 120.0,
+                              child: FilterChip(
+                                label: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.star_border,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      "Music",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                                onSelected: (bool value) {},
+                                backgroundColor: Colors.black,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            Container(
+                              width: 120.0,
+                              child: FilterChip(
+                                label: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.star_border,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      "Music",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                                onSelected: (bool value) {},
+                                backgroundColor: Colors.black,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            Container(
+                              width: 120.0,
+                              child: FilterChip(
+                                label: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.star_border,
+                                      color: Colors.white,
+                                    ),
+                                    Text(
+                                      "Music",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                                onSelected: (bool value) {},
+                                backgroundColor: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 100.0,
+                ),
+                list[index],
+                Divider(
+                  color: Colors.black,
+                  thickness: 2.0,
+                ),
+                list[index],
+                Divider(
+                  color: Colors.black,
+                  thickness: 2.0,
+                ),
+                list[index],
+                Divider(
+                  color: Colors.black,
+                  thickness: 2.0,
+                ),
+              ],
+            ),
           );
         },
       ),

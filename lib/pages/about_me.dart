@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:assesment/pages/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AboutMe extends StatefulWidget {
   @override
@@ -23,6 +25,20 @@ class _AboutMeState extends State<AboutMe> {
   late String location;
   late String dob;
   late String bio;
+
+  File? _selectedImage;
+
+  Future<void> _selectImageFromGallery() async {
+    final imagePicker = ImagePicker();
+    final pickedImage =
+        await imagePicker.pickImage(source: ImageSource.gallery);
+
+    if (pickedImage != null) {
+      setState(() {
+        _selectedImage = File(pickedImage!.path);
+      });
+    }
+  }
 
   void navigateToProfile() {
     Navigator.push(
@@ -83,14 +99,22 @@ class _AboutMeState extends State<AboutMe> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: CircleAvatar(
-                      backgroundColor: Colors.cyanAccent,
-                      radius: 140.0,
-                      child: Icon(
-                        Icons.add,
-                        size: 80.0,
-                        color: Colors.black,
+                    child: GestureDetector(
+                      child: CircleAvatar(
+                        backgroundImage: _selectedImage != null
+                            ? FileImage(_selectedImage!)
+                            : null,
+                        backgroundColor: Colors.cyanAccent,
+                        radius: 140.0,
+                        child: _selectedImage != null
+                            ? null
+                            : Icon(
+                                Icons.add,
+                                size: 80.0,
+                                color: Colors.black,
+                              ),
                       ),
+                      onTap: _selectImageFromGallery,
                     ),
                   ),
                   SizedBox(height: 50.0),
