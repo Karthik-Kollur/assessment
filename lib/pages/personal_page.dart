@@ -1,24 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'about_me.dart';
-
 class PersonalPage extends StatefulWidget {
   @override
   State<PersonalPage> createState() => _PersonalPageState();
 }
 
 class _PersonalPageState extends State<PersonalPage> {
-  void _editProfile() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => AboutMe()));
-  }
+  // void _editProfile() {
+  //   Navigator.push(context, MaterialPageRoute(builder: (context) => AboutMe()));
+  // }
 
-  void _openSettings() {
+  // void _openSettings() {}
 
-  }
-
-  void _logout() {
-
-  }
+  // void _logout() {}
 
   @override
   Widget build(BuildContext context) {

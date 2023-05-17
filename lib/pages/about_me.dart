@@ -1,4 +1,3 @@
-import 'package:assesment/pages/personal_page.dart';
 import 'package:assesment/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 
@@ -40,178 +39,44 @@ class _AboutMeState extends State<AboutMe> {
     );
   }
 
-  List<Widget> getListOfCard(BuildContext context) {
-    var currentWidget = GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => PersonalPage()));
-      },
-      child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.cyanAccent,
-                  radius: 50.0,
-                ),
-                SizedBox(
-                  width: 20.0,
-                ),
-                Column(
-                  children: [
-                    Text(
-                      userName,
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      dob,
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(bio),
-            ),
-            Row(
-              children: [
-                Container(
-                  width: 120.0,
-                  child: FilterChip(
-                    label: Row(
-                      children: [
-                        Icon(Icons.location_pin),
-                        Text(location),
-                      ],
-                    ),
-                    onSelected: (bool value) {},
-                    backgroundColor: Colors.white70,
-                  ),
-                ),
-                SizedBox(
-                  width: 20.0,
-                ),
-                Container(
-                  width: 120.0,
-                  child: FilterChip(
-                    label: Row(
-                      children: [
-                        Icon(Icons.male),
-                        Text(selectedGender),
-                      ],
-                    ),
-                    onSelected: (bool value) {},
-                    backgroundColor: Colors.white70,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                  width: 120.0,
-                  child: FilterChip(
-                    label: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.star_border,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          "Music",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    onSelected: (bool value) {},
-                    backgroundColor: Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  width: 20.0,
-                ),
-                Container(
-                  width: 120.0,
-                  child: FilterChip(
-                    label: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.star_border,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          "Music",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    onSelected: (bool value) {},
-                    backgroundColor: Colors.black,
-                  ),
-                ),
-                SizedBox(
-                  width: 20.0,
-                ),
-                Container(
-                  width: 120.0,
-                  child: FilterChip(
-                    label: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.star_border,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          "Music",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    onSelected: (bool value) {},
-                    backgroundColor: Colors.black,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-
-    list.add(currentWidget);
-
-    list.add(SizedBox(
-      height: 10,
-    ));
-
-    return list;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Text(
-                "About Me",
-                style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+            padding: const EdgeInsets.only(top: 10.0, right: 8.0),
+            child: Container(
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        "About Me",
+                        style: TextStyle(
+                            fontSize: 40.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.only(
+              top: 45.0,
+              right: 45.0,
+              left: 45.0,
+            ),
             child: Form(
               key: _formKey,
               child: Column(
@@ -220,7 +85,7 @@ class _AboutMeState extends State<AboutMe> {
                   Center(
                     child: CircleAvatar(
                       backgroundColor: Colors.cyanAccent,
-                      radius: 100.0,
+                      radius: 140.0,
                       child: Icon(
                         Icons.add,
                         size: 80.0,
@@ -228,7 +93,7 @@ class _AboutMeState extends State<AboutMe> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  SizedBox(height: 50.0),
                   Text(
                     'Username*',
                     style:
@@ -248,7 +113,7 @@ class _AboutMeState extends State<AboutMe> {
                       hintText: 'Enter your username',
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  SizedBox(height: 20.0),
                   Text(
                     'Location*',
                     style:
@@ -268,7 +133,7 @@ class _AboutMeState extends State<AboutMe> {
                       hintText: 'Enter your location',
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  SizedBox(height: 20.0),
                   Text(
                     'Date of Birth*',
                     style:
@@ -288,13 +153,7 @@ class _AboutMeState extends State<AboutMe> {
                       hintText: 'Enter your date of birth',
                     ),
                   ),
-                  SizedBox(height: 16.0),
-                  Text(
-                    'Gender*',
-                    style:
-                        TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 8.0),
+                  SizedBox(height: 20.0),
                   Row(
                     children: [
                       GestureDetector(
@@ -325,6 +184,11 @@ class _AboutMeState extends State<AboutMe> {
                           backgroundColor:
                               isMaleSelected ? Colors.black : Colors.white,
                           selectedColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          elevation: 3.0,
+                          pressElevation: 6.0,
                         ),
                       ),
                       SizedBox(width: 8.0),
@@ -357,6 +221,11 @@ class _AboutMeState extends State<AboutMe> {
                           backgroundColor:
                               isFemaleSelected ? Colors.black : Colors.white,
                           selectedColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          elevation: 3.0,
+                          pressElevation: 6.0,
                         ),
                       ),
                       SizedBox(width: 8.0),
@@ -389,13 +258,18 @@ class _AboutMeState extends State<AboutMe> {
                           backgroundColor:
                               isNonBinarySelected ? Colors.black : Colors.white,
                           selectedColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          elevation: 3.0,
+                          pressElevation: 6.0,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 16.0),
+                  SizedBox(height: 20.0),
                   Text(
-                    'Bio',
+                    'Bio*',
                     style:
                         TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                   ),
@@ -414,39 +288,43 @@ class _AboutMeState extends State<AboutMe> {
                       hintText: 'Enter your bio',
                     ),
                   ),
-                  SizedBox(height: 16.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            setState(() {
-                              userName = usernameController.text;
-                              location = locationController.text;
-                              dob = dobController.text;
-                              bio = bioController.text;
-                            });
-                            getListOfCard(context);
-                            navigateToProfile();
-                          }
-                        },
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Colors.cyanAccent),
-                          minimumSize:
-                              MaterialStateProperty.all<Size>(Size(150, 50)),
-                        ),
-                        child: Text(
-                          'Continue',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    setState(() {
+                      userName = usernameController.text;
+                      location = locationController.text;
+                      dob = dobController.text;
+                      bio = bioController.text;
+                    });
+
+                    navigateToProfile();
+                  }
+                },
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.cyanAccent),
+                  minimumSize: MaterialStateProperty.all<Size>(Size(200, 50)),
+                ),
+                child: Text(
+                  'Continue',
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
           ),
         ],
       ),
